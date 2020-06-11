@@ -8,3 +8,6 @@ titles:
 langs:
   portuguese: Português
   english: Inglês
+descriptions:
+  contributing: "How to contribute with satellite 4 noobs"
+  home: "This repository is a tutorial dedicated to teach satellite and radio communications! Welcome to the el-cheapo-station :tm: where we will always try to assemble stuff with the **least** possible cost!"

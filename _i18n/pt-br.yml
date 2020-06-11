@@ -8,3 +8,6 @@ titles:
 langs:
   portuguese: Português
   english: Inglês
+descriptions:
+  contributing: "Como contribuir com sat4noobs"
+  home: "Este repositório é um tutorial dedicado ao ensino de comunicações via satélite e rádio! Sejam bem-vindos ao modo PobreStation :tm: onde sempre tentaremos montar as coisas com o **menor** custo possível!"
