@@ -1,0 +1,10 @@
+global:
+  translated-by: "Translated by:"
+pages:
+  home: Home
+  contributing: Contributing
+  posts: All
+titles:
+langs:
+  portuguese: Português
+  english: Inglês

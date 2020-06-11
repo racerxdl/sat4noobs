@@ -1,0 +1,88 @@
+url: https://sat4noobs.space/
+name: Sat4Noobs by He4rtDevs
+title: Satellite 4 Noobs
+description: 'Um tutorial para iniciantes ao mundo dos satélites!'
+image: '/_includes/logo.svg'
+
+author:
+  name:         Lucas Teske
+  url:          https://lucasteske.dev
+  email:        letshackit@nvx.li
+
+markdown:       kramdown
+include:
+  - _pages
+#
+sass:
+  sass_dir:     _sass
+  style:        compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
+  - jekyll-multiple-languages-plugin
+  - jekyll-seo-tag
+
+# Multiple Languages
+languages: ["pt-br", "en-us"]
+exclude_from_localizations: ["javascript", "images", "css", "assets"]
+
+
+# Permalinks
+permalink:      /:year/:month/:title
+paginate:       5
+
+
+social:
+  twitter: He4rtDevs
+  github: he4rt
+
+
+twitter:
+  username: He4rtDevs
+  card: summary_large_image
+
+
+# Excludes
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - site.conf
+  - run.sh
+  - Dockerfile
+  - sat4noobs.sublime-project
+  - sat4noobs.sublime-workspace
+  - vendor
+
+data:
+  en:
+    months:
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+  pt:
+    months:
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
