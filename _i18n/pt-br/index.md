@@ -5,6 +5,7 @@ Este tutorial irá contar com partes de **software** (Aquilo que você chinga), 
 
 ![NOAA 19](/assets/posts/home/noaa.jpg)
 
+** WORK IN PROGRESS **
 
 Conteúdo
 ========
@@ -48,5 +49,5 @@ Conteúdo
     * [Instalando no Windows]
     * [Instalando no MacOSX]
     * [Instalando no Linux]
-  * [Fazendo um Rádio FM]
-  * [Fazendo um Radio AM]
+  * [Fazendo um Rádio FM](/2020/06/criando-radio-fm)
+  * [Fazendo um Radio AM](/2020/06/criando-radio-am)

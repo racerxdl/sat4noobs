@@ -4,6 +4,12 @@ pages:
   home: Home
   contributing: Contributing
   posts: All
+  recordings:
+    title: "Recordings"
+    description: "Download here some recordings to play with radios!"
+  rtl-sdr:
+    title: "RTL-SDR"
+    description: "Information about RTL-SDR Radios"
 titles:
 langs:
   portuguese: Português

@@ -18,6 +18,14 @@ $content-color: #272726;
 $on-mobile:        600px !default;
 $on-laptop:        800px !default;
 
+$default-tint: #aaa;
+
+// Fonts
+$serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
+$serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
+$sans-serif: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+$monospaced: Menlo, Monaco, monospace;
+
 // mixins
 @mixin relative-font-size($ratio) {
 	font-size: #{$ratio}rem;
@@ -26,7 +34,7 @@ $on-laptop:        800px !default;
 	@media screen and (max-width: $device) {
 	  @content;
 	}
-}  
+}
 
 @import 'base';
 @import 'layout';

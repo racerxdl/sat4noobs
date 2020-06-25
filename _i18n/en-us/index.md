@@ -5,6 +5,8 @@ This tutorial will count with some **software** (stuff that you yell at), **hard
 
 ![NOAA 19](/assets/posts/home/noaa.jpg)
 
+** WORK IN PROGRESS **
+
 Content
 ========
 
@@ -47,5 +49,5 @@ Content
     * [Installing on Windows]
     * [Installing on MacOSX]
     * [Installing on Linux]
-  * [Making a FM Radio]
-  * [Making a AM Radio]
+  * [Making a FM Radio](/2020/06/creating-a-fm-radio)
+  * [Making a AM Radio](/2020/06/creating-a-am-radio)
