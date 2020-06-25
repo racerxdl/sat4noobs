@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-br"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://sat4noobs.space//feed.xml" rel="self" type="application/atom+xml" /><link href="https://sat4noobs.space//" rel="alternate" type="text/html" hreflang="pt-br" /><updated>2020-06-25T03:03:29+00:00</updated><id>https://sat4noobs.space//feed.xml</id><title type="html">Satellite 4 Noobs</title><subtitle>Um tutorial para iniciantes ao mundo dos satélites!</subtitle><author><name>Lucas Teske</name><email>letshackit@nvx.li</email></author><entry><title type="html">Decimação</title><link href="https://sat4noobs.space//2020/06/decimation" rel="alternate" type="text/html" title="Decimação" /><published>2020-06-25T01:47:00+00:00</published><updated>2020-06-25T01:47:00+00:00</updated><id>https://sat4noobs.space//2020/06/decimation</id><content type="html" xml:base="https://sat4noobs.space//2020/06/decimation">&lt;p&gt;TODO&lt;/p&gt;</content><author><name>Lucas Teske</name></author><summary type="html">TODO</summary></entry><entry><title type="html">Criando um Radio AM</title><link href="https://sat4noobs.space//2020/06/criando-radio-am" rel="alternate" type="text/html" title="Criando um Radio AM" /><published>2020-06-25T00:00:01+00:00</published><updated>2020-06-25T00:00:01+00:00</updated><id>https://sat4noobs.space//2020/06/criando-radio-am</id><content type="html" xml:base="https://sat4noobs.space//2020/06/criando-radio-am">&lt;p&gt;TESTE&lt;/p&gt;</content><author><name>Lucas Teske</name></author><summary type="html">TESTE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://sat4noobs.space//assets/posts/amradio/title.jpg" /><media:content medium="image" url="https://sat4noobs.space//assets/posts/amradio/title.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Criando um Radio FM</title><link href="https://sat4noobs.space//2020/06/criando-radio-fm" rel="alternate" type="text/html" title="Criando um Radio FM" /><published>2020-06-25T00:00:00+00:00</published><updated>2020-06-25T00:00:00+00:00</updated><id>https://sat4noobs.space//2020/06/criando-radio-fm</id><content type="html" xml:base="https://sat4noobs.space//2020/06/criando-radio-fm">&lt;p&gt;** WORK IN PROGRESS **&lt;/p&gt;
+
+&lt;p&gt;Hoje vamos aprender a fazer um simples Radio FM usando o GNU Radio! Para isso você deverá ter um &lt;a href=&quot;/rtl-sdr&quot;&gt;RTL-SDR&lt;/a&gt; ou uma &lt;a href=&quot;/recordings&quot;&gt;gravação&lt;/a&gt; em seu computador!&lt;/p&gt;
+
+&lt;h2 id=&quot;configurando-projeto&quot;&gt;Configurando Projeto&lt;/h2&gt;
+
+&lt;p&gt;Logo após criar um novo projeto no GNU Radio devemos configurar o nome do projeto nas especificações do módulo &lt;code class=&quot;highlighter-rouge&quot;&gt;top-level&lt;/code&gt;. Este módulo está geralmente no canto superior esquerdo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/project.jpg&quot; alt=&quot;Bloco Top-Level&quot; /&gt;&lt;em&gt;Bloco Top-Level&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Clique duas vezes no bloco para abrir as configurações do projeto e selecione um nome, autor e id a sua escolha.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/project-config.jpg&quot; alt=&quot;Configurações do Projeto&quot; /&gt;&lt;em&gt;Configurações do Projeto&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;O próximo passo é adicionar o primeiro bloco que é a &lt;code class=&quot;highlighter-rouge&quot;&gt;fonte&lt;/code&gt; de dados. Esta fonte é diferente caso você esteja usando uma &lt;a href=&quot;#usando-uma-gravação&quot;&gt;gravação&lt;/a&gt; ou um &lt;a href=&quot;#usando-rtlsdr&quot;&gt;RTLSDR&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;usando-rtlsdr&quot;&gt;Usando RTLSDR&lt;/h2&gt;
+
+&lt;p&gt;Para o uso de um RTLSDR você deverá usar o bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;RTL-SDR Source&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-rtlsdr.jpg&quot; alt=&quot;Fonte de dados RTL-SDR&quot; /&gt;&lt;em&gt;Fonte de dados RTL-SDR&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Você por enquanto pode deixar as configurações padrões:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-rtlsdr-config.jpg&quot; alt=&quot;Configuração do RTL-SDR Source&quot; /&gt;&lt;em&gt;Configuração da fonte de dados RTL-SDR&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora você pode continuar para &lt;a href=&quot;#continuando-o-rádio-fm&quot;&gt;Continuando o Rádio FM&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h2 id=&quot;usando-uma-gravação&quot;&gt;Usando uma Gravação&lt;/h2&gt;
+
+&lt;p&gt;Para o uso de uma gravação você deverá usar dois blocos: &lt;code class=&quot;highlighter-rouge&quot;&gt;File Source&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;Throttle&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-file.jpg&quot; alt=&quot;Fonte de dados de arquivo&quot; /&gt;&lt;em&gt;Fonte de dados de arquivo&lt;/em&gt;
+&lt;img src=&quot;/assets/posts/fmradio/block-throttle.jpg&quot; alt=&quot;Bloco de Controle de Fluxo&quot; /&gt;&lt;em&gt;Bloco de Controle de Fluxo&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;O bloco de controle de fluxo (Throttle) serve para controlar quantas amostras vão ser lidas por segundo da gravação. Sem ela o GNU Radio tentará ler tudo de uma vez e poderá ter alguns problemas em seu computador! O bloco RTLSDR já contém um limitador de fluxo interno, por isso não é nescessário.&lt;/p&gt;
+
+&lt;p&gt;Você poderá deixar as configurações padrões em ambos, porém no bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;File Source&lt;/code&gt; você deverá escolher o arquivo ao qual deseja ler no campo &lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt;. Os outros valores podem ser deixados no que já estão.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-file-config.jpg&quot; alt=&quot;Configuração do arquivo&quot; /&gt;&lt;em&gt;Configuração do arquivo&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Após isso você pode ligar os dois blocos arrastando a saída do &lt;code class=&quot;highlighter-rouge&quot;&gt;File Source&lt;/code&gt; para a entrada do &lt;code class=&quot;highlighter-rouge&quot;&gt;Throttle&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-file-throttle.jpg&quot; alt=&quot;Blocos File e Throttle ligados&quot; /&gt;&lt;em&gt;Blocos File e Throttle ligados&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora você pode continuar para &lt;a href=&quot;#continuando-o-rádio-fm&quot;&gt;Continuando o Rádio FM&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h2 id=&quot;continuando-o-rádio-fm&quot;&gt;Continuando o Rádio FM!&lt;/h2&gt;
+
+&lt;p&gt;Agora que temos a nossa fonte configurada corretamente, vamos testa-la usando um &lt;code class=&quot;highlighter-rouge&quot;&gt;Analisador de Espectro&lt;/code&gt;. Para isso iremos usar o bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;QT Frequency Sink&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-frequency-sink.jpg&quot; alt=&quot;Analisador de Espectro&quot; /&gt;&lt;em&gt;Analisador de Espectro&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As configurações padrões devem funcionar, mas para um critério de melhor visualização podemos otimizar os parâmetros &lt;code class=&quot;highlighter-rouge&quot;&gt;FFT Size&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;Update Period&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-frequency-sink-config.jpg&quot; alt=&quot;Configuração do Analisador de Espectro&quot; /&gt;&lt;em&gt;Configuração do Analisador de Espectro&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;FFT Size&lt;/code&gt; define a resolução do analisador de espectro. Iremos configurar para &lt;code class=&quot;highlighter-rouge&quot;&gt;4096&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;O parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;Update Period&lt;/code&gt; define a taxa de atualização da imagem que iremos gerar do espectro! Vamos configurar para &lt;code class=&quot;highlighter-rouge&quot;&gt;0.01&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;O parârametro &lt;code class=&quot;highlighter-rouge&quot;&gt;Center Frequency&lt;/code&gt; define qual a frequência central marcada pelo analisador. Escreveremos &lt;code class=&quot;highlighter-rouge&quot;&gt;center_frequency&lt;/code&gt; aqui, pois iremos definir mais tarde uma variável com este nome.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Além disso deveremos configurar a variável &lt;code class=&quot;highlighter-rouge&quot;&gt;samp_rate&lt;/code&gt; (que é criada junto com o projeto novo) para &lt;code class=&quot;highlighter-rouge&quot;&gt;2.56e6&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;2560000&lt;/code&gt;). Para isso clique duas vezes em cima do bloco da varíavel na tela e configure o campo &lt;code class=&quot;highlighter-rouge&quot;&gt;Value&lt;/code&gt; para &lt;code class=&quot;highlighter-rouge&quot;&gt;2.56e6&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-variable.jpg&quot; alt=&quot;Variável da Taxa de Amostragem&quot; /&gt;&lt;em&gt;Variável da Taxa de Amostragem&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora criaremos um variável nova chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;center_frequency&lt;/code&gt; onde o valor será a frequência a qual o rádio estará sintonizado. No caso de uma gravação, este efeito será meramente visual (não irá alterar nada no sinal). No exemplo iremos usar &lt;code class=&quot;highlighter-rouge&quot;&gt;100.9e6&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;100900000 Hz&lt;/code&gt;). Para isto o campo &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; da variável será &lt;code class=&quot;highlighter-rouge&quot;&gt;center_frequency&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-variable-frequency.jpg&quot; alt=&quot;Variável da Frequência Central&quot; /&gt;&lt;em&gt;Variável da Frequência Central&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Caso você esteja usando o RTLSDR, efetue a mudança do campo &lt;code class=&quot;highlighter-rouge&quot;&gt;Center Frequency&lt;/code&gt; também no bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;RTL-SDR Source&lt;/code&gt; (dica: você pode escrever &lt;code class=&quot;highlighter-rouge&quot;&gt;center_frequency&lt;/code&gt; no valor do campo para usar o valor da varíavel recém criada!)&lt;/p&gt;
+
+&lt;p&gt;Feito isso podemos ligar o bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;QT Frequency Sink&lt;/code&gt; a fonte (no caso do &lt;code class=&quot;highlighter-rouge&quot;&gt;RTL-SDR Source&lt;/code&gt; diretamente, no caso da gravação ligado no bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;Throttle&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Após todos blocos ligados, podemos executar o nosso &lt;em&gt;programa&lt;/em&gt; clicando no botão &lt;strong&gt;play&lt;/strong&gt; na barra do GNU Radio&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/gnuradio-play-button.jpg&quot; alt=&quot;Botão Play&quot; /&gt;&lt;em&gt;Botão Play&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Depois de alguns instantes o programa criado irá aparecer:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/fft-preview0.jpg&quot; alt=&quot;Visualização do Analisador de Espectro&quot; /&gt;&lt;em&gt;Visualização do Analisador de Espectro&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Parabéns! Se você conseguiu ver uma imagem similar a esta, você está no caminho certo! Caso esteja usando um RTL-SDR e não esteja vendo exatamente isso veja a seção &lt;a href=&quot;#observações-para-o-rtl-sdr&quot;&gt;Observações para o RTL-SDR&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;seleção-de-porção-do-espectro&quot;&gt;Seleção de porção do espectro&lt;/h2&gt;
+
+&lt;p&gt;Na visualização espectral do sinal de rádio, podemos observar que há várias transmissões de rádio. As transmissões podem ser identificadas por &lt;strong&gt;picos&lt;/strong&gt; no espectro. Na imagem abaixo, cada quadrado vermelho representa uma emissora de rádio.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/fft-preview0-freqs.jpg&quot; alt=&quot;Emissoras de rádio no espectro&quot; /&gt;&lt;em&gt;Emissoras de rádio no espectro&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Porém desejamos apenas uma: A que está no centro. Todo resto pode ser descartado tanto para nos ajudar a consumir menos processamento quanto para ficar mais fácil de demodular o sinal de áudio sendo transmitido.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/fft-preview0-freqs-blur.jpg&quot; alt=&quot;Emissora de interesse&quot; /&gt;&lt;em&gt;Emissora de interesse&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para isso iremos usar um bloco de filtro passa-baixa &lt;strong&gt;Low Pass Filter&lt;/strong&gt;. Para pessoas com conhecimento de áudio, poderá parecer estranho usar um filtro passa-baixa ao invés de um passa-banda. Porém trabalhando com sinais de rádio em formato de números complexos, o filtro passa-baixa tem o efeito esperado. Mais detalhes disso serão explicados em outro artigo.&lt;/p&gt;
+
+&lt;p&gt;Um rádio FM tem uma transmissão de mais ou menos 190kHz de largura (isso pode ser conferido pelo analisador de espectro), para isso iremos fazer um filtro passa-baixa de pelo menos 95kHz. O filtro passa-baixa irá deixar passar apenas os sinais entre &lt;code class=&quot;highlighter-rouge&quot;&gt;frequencia central - 95kHz&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;frequencia central + 95Khz&lt;/code&gt;, desta maneira totalizando os 190kHz esperados. Iremos também efetuar o processo de &lt;a href=&quot;/2020/06/decimation&quot;&gt;decimação&lt;/a&gt;. Este processo irá tirar a média de &lt;em&gt;N&lt;/em&gt; amostras para gerar apenas &lt;em&gt;uma&lt;/em&gt; amostra na saída. Este processo simultaneamente reduz o nosso ruído assim como a nossa taxa de amostragem. Para este exemplo iremos usar a taxa de decimação como &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt;. Isso irá reduzir nossa taxa de amostragem de &lt;code class=&quot;highlighter-rouge&quot;&gt;2.56e6&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;2560000&lt;/code&gt;) para 640e3 (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;640000&lt;/code&gt;). Para isso iremos criar uma variável &lt;code class=&quot;highlighter-rouge&quot;&gt;decimation&lt;/code&gt; com valor &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-variable-decimation.jpg&quot; alt=&quot;Variável do Fator de Decimação&quot; /&gt;&lt;em&gt;Variável do Fator de Decimação&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;E após isso poderemos criar o nosso &lt;code class=&quot;highlighter-rouge&quot;&gt;Low pass filter&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-low-pass.jpg&quot; alt=&quot;Filtro Passa Baixa&quot; /&gt;&lt;em&gt;Filtro Passa Baixa&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Configuraremos os seguintes parâmetros nele:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Decimation&lt;/code&gt; =&amp;gt; A taxa de decimação. O valor será &lt;code class=&quot;highlighter-rouge&quot;&gt;decimation&lt;/code&gt; (a nossa variável recém criada)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Sample Rate&lt;/code&gt; =&amp;gt; a taxa de amostragem &lt;strong&gt;de entrada&lt;/strong&gt;. O valor será &lt;code class=&quot;highlighter-rouge&quot;&gt;samp_rate&lt;/code&gt; (a variável criada no começo do projeto)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cutoff Freq&lt;/code&gt; =&amp;gt; Frequência de corte. O valor será &lt;code class=&quot;highlighter-rouge&quot;&gt;95e3&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;95000&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Transition Width&lt;/code&gt; =&amp;gt; Largura da faixa de transição. O valor será de &lt;code class=&quot;highlighter-rouge&quot;&gt;5e3&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;5000&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Os outros campos poderão ficar nos valores padrões.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-low-pass-config.jpg&quot; alt=&quot;Configuração do filtro Passa Baixa&quot; /&gt;&lt;em&gt;Configuração do filtro Passa Baixa&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Iremos também alterar nosso bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;QT Frequency Sink&lt;/code&gt; para que a taxa de amostragem seja a correta (agora iremos ligar ele na saída do filtro). Para isso iremos mudar o campo &lt;code class=&quot;highlighter-rouge&quot;&gt;Sample Rate&lt;/code&gt; do bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;QT Frequency Sink&lt;/code&gt; para &lt;code class=&quot;highlighter-rouge&quot;&gt;samp_rate/decimation&lt;/code&gt; (sim! podemos colocar expressões entre variáveis também :smile:) e podemos ligar ele no bloco de passa baixa ao invés da fonte.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-low-pass-frequency-sink.jpg&quot; alt=&quot;Bloco de passa baixa e analisador de espectro&quot; /&gt;&lt;em&gt;Bloco de passa baixa e analisador de espectro&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Feito isso, se iniciarmos nosso programa deveremos ver um espectro completamente diferente agora.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/fft-preview1.jpg&quot; alt=&quot;Analisador de espectro com seleção do canal&quot; /&gt;&lt;em&gt;Analisador de espectro com seleção do canal&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora apenas a faixa de 190kHz central está com sinal forte! Bingo, podemos começar a demodulação!&lt;/p&gt;
+
+&lt;h2 id=&quot;demodulação-de-fm&quot;&gt;Demodulação de FM&lt;/h2&gt;
+
+&lt;p&gt;Agora podemos ir para a cereja do bolo! Usaremos um bloco chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;FM Demod&lt;/code&gt; que, como o próprio nome já diz, efetua a demodulação do sinal FM.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-fm-demod.jpg&quot; alt=&quot;Bloco FM&quot; /&gt;&lt;em&gt;Bloco FM&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para isso iremos fazer algumas configurações:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Channel Rate&lt;/code&gt; =&amp;gt; É a taxa de amostragem &lt;strong&gt;de entrada&lt;/strong&gt;. Este campo será configurado para &lt;code class=&quot;highlighter-rouge&quot;&gt;samp_rate/decimation&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Audio Decimation&lt;/code&gt; =&amp;gt; É a taxa de decimação para a &lt;strong&gt;saída&lt;/strong&gt;. A saída desse bloco é o áudio e por isso é importante escolher a taxa correta. Como a taxa de entrada é &lt;code class=&quot;highlighter-rouge&quot;&gt;640e3&lt;/code&gt;, uma das opções oferecidas pelo bloco &lt;code class=&quot;highlighter-rouge&quot;&gt;Audio Sink&lt;/code&gt; (adicionado mais a frente) é uma taxa de amostragem de áudio de &lt;code class=&quot;highlighter-rouge&quot;&gt;32e3&lt;/code&gt;. Sendo assim, caso a taxa de decimação seja &lt;code class=&quot;highlighter-rouge&quot;&gt;20&lt;/code&gt;, teremos &lt;strong&gt;exatos&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;32000&lt;/code&gt; na saída! Logo este campo será configurado para &lt;code class=&quot;highlighter-rouge&quot;&gt;20&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Os outros campos poderão ser deixados no padrão (as configurações padrões são as mesmas dos padrões brasileiros de FM)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-fm-demod-config.jpg&quot; alt=&quot;Configuração do bloco FM&quot; /&gt;&lt;em&gt;Configuração do bloco FM&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Após isso poderemos criar o bloco que irá mandar a saída de áudio para a placa de som do computador (assim poderemos ouvir o sinal de rádio). Este bloco é o &lt;code class=&quot;highlighter-rouge&quot;&gt;Audio Sink&lt;/code&gt; e ele terá apenas uma configuração: &lt;code class=&quot;highlighter-rouge&quot;&gt;Audio Rate&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-audio-sink.jpg&quot; alt=&quot;Saída de Áudio&quot; /&gt;&lt;em&gt;Saída de Áudio&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Existem algumas opções pré-definidas de &lt;code class=&quot;highlighter-rouge&quot;&gt;Audio Rate&lt;/code&gt;. Em geral o driver do sistema operacional irá converter o som para a taxa de amostragem correta da placa de som e por isso poderemos escolher qualquer valor. Esse valor porém precisa estar conforme todos os outros blocos esperam. O valor mais alto o qual tem um divisor inteiro para nossa taxa de amostragem (&lt;code class=&quot;highlighter-rouge&quot;&gt;640e3&lt;/code&gt;) é &lt;code class=&quot;highlighter-rouge&quot;&gt;32000&lt;/code&gt; (640000 / 20 = 32000). Após a configuração podemos interligar todos os blocos.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/fmradio/block-full-fm-demod.jpg&quot; alt=&quot;Demodulador FM&quot; /&gt;&lt;em&gt;Demodulador FM&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;E agora quando você rodar, você irá ouvir o áudio da radio FM!&lt;/p&gt;
+
+&lt;h2 id=&quot;observações-para-o-rtl-sdr&quot;&gt;Observações para o RTL-SDR&lt;/h2&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;</content><author><name>Lucas Teske</name></author><summary type="html">** WORK IN PROGRESS **</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://sat4noobs.space//assets/posts/fmradio/title.jpg" /><media:content medium="image" url="https://sat4noobs.space//assets/posts/fmradio/title.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Teste</title><link href="https://sat4noobs.space//2020/06/teste" rel="alternate" type="text/html" title="Teste" /><published>2020-06-11T02:48:29+00:00</published><updated>2020-06-11T02:48:29+00:00</updated><id>https://sat4noobs.space//2020/06/teste</id><content type="html" xml:base="https://sat4noobs.space//2020/06/teste">&lt;p&gt;TESTE&lt;/p&gt;</content><author><name>Lucas Teske</name></author><summary type="html">TESTE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://sat4noobs.space//assets/he4rtdevs.png" /><media:content medium="image" url="https://sat4noobs.space//assets/he4rtdevs.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
