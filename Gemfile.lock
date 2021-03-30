@@ -57,7 +57,7 @@ GEM
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
     json (2.3.0)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     liquid (4.0.3)
     listen (3.2.1)
